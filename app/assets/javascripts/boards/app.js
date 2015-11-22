@@ -1,0 +1,1 @@
+angular.module('chess-solver', ['ui.bootstrap', 'chess-solver.controllers', 'chess-solver.directives']);

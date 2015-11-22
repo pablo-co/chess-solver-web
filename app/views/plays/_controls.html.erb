@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    Turn ({{current_board + 1}}/{{boards.length}}):
+    <span class="turn-color" ng-style="{'background-color': active_board.turn == 'whites' ? '#FFF' : '#000'}">
+    </span>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="btn btn-default" ng-click="previousBoard()">
+      <%= fa_icon 'fast-backward' %>
+    </div>
+    <div class="btn btn-default" ng-click="nextBoard()">
+      <%= fa_icon 'fast-forward' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Boards
+      <small>Subheading</small>
+      <span class="pull-right">
+        <%= link_to 'New Board', new_game_board_path, class: 'btn btn-primary' %>
+      </span>
+    </h1>
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <% @boards.each do |board| %>
+      <div class="col-md-3">
+        <%= render partial: 'game_boards/board', locals: {board: board} %>
+      </div>
+  <% end %>
+</div>
+
+<hr>
+
+<%= will_paginate @boards %>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Editing @board.name
+    </h1>
+    <ol class="breadcrumb">
+      <li><%= link_to 'Boards', game_boards_path %></li>
+      <li class="active"><%= @board.name %></li>
+    </ol>
+  </div>
+</div>
+
+<%= render partial: 'form', locals: {hide_chess: true} %>
+
+<%= link_to 'Show', @board %>

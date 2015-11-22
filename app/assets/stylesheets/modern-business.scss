@@ -1,0 +1,151 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+  margin-bottom: 30px;
+}
+
+.img-hover:hover {
+  opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+  height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+  height: 100%;
+}
+
+header.carousel .fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+  font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+  display: block;
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.price sup {
+  top: -20px;
+  left: 2px;
+  font-size: 20px;
+}
+
+.period {
+  display: block;
+  font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+  margin: 50px 0;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 991px) {
+  .customer-img,
+  .img-related {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .img-portfolio {
+    margin-bottom: 15px;
+  }
+
+  header.carousel .carousel {
+    height: 70%;
+  }
+}
+
+#chess {
+  width: 100%;
+  height: 100%;
+  margin: 0.5em;
+  border: 2px solid #808080;
+  display: inline-block;
+
+  div {
+    float: left;
+    width: 12.5%;
+    height: 12.5%;
+    background-color: #F0D9B5;
+  }
+
+  .chess-add {
+    width: 70%;
+    height: 70%;
+    margin: 15%;
+    font-size: 4.3em;
+    opacity: 0;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .piece-img {
+    margin: 1px;
+  }
+}
+
+#chess div:nth-child(-2n+8),
+#chess div:nth-child(8) ~ div:nth-child(-2n+15),
+#chess div:nth-child(16) ~ div:nth-child(-2n+24),
+#chess div:nth-child(24) ~ div:nth-child(-2n+31),
+#chess div:nth-child(32) ~ div:nth-child(-2n+40),
+#chess div:nth-child(40) ~ div:nth-child(-2n+47),
+#chess div:nth-child(48) ~ div:nth-child(-2n+56),
+#chess div:nth-child(56) ~ div:nth-child(-2n+63) {
+  background-color: #B58863;
+  .chess-add {
+    color: #FFF;
+  }
+
+}
+
+.select-piece {
+  cursor: pointer;
+}
+
+.turn-color {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #808080;
+  vertical-align: bottom;
+}

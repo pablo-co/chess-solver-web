@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  PORT: 3306
+  pool: 5
+
+development:
+  <<: *default
+  database: chess_solver_development
+  username: chess_solver_dev
+  password: foo
+
+test:
+  <<: *default
+  database: chess_solver_test
+  username: chess_solver_test
+  password: foo
+
+production:
+  <<: *default
+  database: chess_solver_production
+  username: <%= ENV['CHESS_SOLVER_DATABASE_USERNAME'] %>
+  password: <%= ENV['CHESS_SOLVER_DATABASE_PASSWORD'] %>
+  pool: 25

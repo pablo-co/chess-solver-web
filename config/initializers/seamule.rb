@@ -1,0 +1,1 @@
+SeaMule.redis = {host: 'localhost', post: 6379, db: 0}

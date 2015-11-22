@@ -1,0 +1,9 @@
+<div ng-controller="ChessShowCtrl">
+  <%= link_to game_board_path(board) do %>
+      <div id="chess" ng-init="pieces = <%= board.pieces.map { |piece| piece.image = asset_path("pieces/#{piece.color}/#{piece.kind}.png"); piece }.to_json(methods: [:image]) %>">
+        <div ng-repeat="place in places" square>
+          <img ng-src="{{place.image}}" class="img-responsive piece-img">
+        </div>
+      </div>
+  <% end %>
+</div>

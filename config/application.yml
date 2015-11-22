@@ -1,0 +1,16 @@
+defaults: &defaults
+  host: localhost:3000
+  chess:
+    path: /home/pablo/Downloads/ServerChess/a.out
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,14 @@
+<%
+   images = {}
+   Piece.colors.keys.each do |color|
+     images[color] = {}
+     Piece.kinds.keys.each do |kind|
+       images[color][kind] = asset_path("pieces/#{color}/#{kind}.png")
+     end
+   end
+%>
+<div id="chess" ng-init="boards = <%= play.play_boards.to_json(methods: [:pieces]) %>; images = <%= images.to_json %>">
+  <div ng-repeat="place in places" square>
+    <img ng-src="{{place.image}}" class="img-responsive piece-img">
+  </div>
+</div>

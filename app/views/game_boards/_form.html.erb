@@ -1,0 +1,33 @@
+<% hide_chess = hide_chess.nil? ? false : hide_chess %>
+<div class="row">
+  <div class="col-md-8" ng-controller="ChessFormCtrl">
+    <%= simple_form_for(@board) do |f| %>
+        <div class="control-group form-group">
+          <%= f.input :name, html: {class: 'controls'}, input_html: {class: 'form-control'} %>
+        </div>
+
+        <% unless hide_chess %>
+            <div class="control-group form-group">
+              <%= f.input :turn, label: false, wrapper: false, collection: enum_for_select(GameBoard, 'turn'), prompt: :translate, input_html: {class: 'form-control'} %>
+            </div>
+
+            <div id="chess" class="control-group form-group">
+              <div ng-repeat="place in places">
+                <%= fa_icon 'plus-circle', class: 'chess-add', 'add-piece' => '{{$index}}', 'ng-hide' => '{{place.image != null}}' %>
+                <img ng-src="{{place.image}}" class="img-responsive piece-img" ng-hide="{{place.image == null}}" ng-click="place.image = null">
+                <input name="game_board[pieces_attributes][][kind]" value="{{places[$index].kind}}" type="hidden" ng-if="place.kind"/>
+                <input name="game_board[pieces_attributes][][color]" value="{{places[$index].color}}" type="hidden" ng-if="place.kind"/>
+                <input name="game_board[pieces_attributes][][x]" value="{{places[$index].x}}" type="hidden" ng-if="place.kind"/>
+                <input name="game_board[pieces_attributes][][y]" value="{{places[$index].y}}" type="hidden" ng-if="place.kind"/>
+              </div>
+            </div>
+        <% end %>
+
+        <div class="control-group form-group ">
+          <%= f.submit 'Save', class: 'btn btn-primary pull-right' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: 'shared/add_piece_template', locals: {pieces: @pieces, colors: @colors} %>

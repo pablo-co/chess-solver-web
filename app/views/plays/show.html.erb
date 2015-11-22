@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div ng-controller="PlayShowCtrl">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header"><%= @play.game_board.name %>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to @play.game_board.name, game_board_path(@play.game_board) %></li>
+        <li class="active"><%= @play.value %></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <%= render partial: 'plays/board', locals: {play: @play} %>
+    </div>
+    <div class="col-md-5">
+      <%= render partial: 'plays/controls' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= @board.name %>
+      <small><%= @board.completion %>% completed</small>
+      <span class="pull-right"><%= link_to 'Edit', edit_game_board_path(@board), class: 'btn btn-primary' %></span>
+    </h1>
+    <ol class="breadcrumb">
+      <li><%= link_to 'Boards', game_boards_path %></li>
+      <li class="active"><%= @board.name %></li>
+    </ol>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-7">
+    <%= render partial: 'game_boards/board', locals: {board: @board} %>
+  </div>
+  <div class="col-md-5">
+
+    <ul id="myTab" class="nav nav-tabs nav-justified">
+      <li class="active"><a href="#stats" data-toggle="tab" aria-expanded="true"><i class="fa fa-tree"></i>Stats</a>
+      </li>
+      <li class=""><a href="#moves" data-toggle="tab" aria-expanded="false"><i class="fa fa-car"></i>Moves</a>
+      </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="stats">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="page-header">Current statistics</h2>
+          </div>
+          <% if @board.draws.nil? %>
+              <div class="col-md-12">
+                <div class="media">
+                  <div class="pull-left">
+                <span class="fa-stack fa-2x">
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fa fa-pie-chart fa-stack-1x fa-inverse"></i>
+                </span>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">No stats</h4>
+
+                    <p>We don't have any stats for the moment...</p>
+                  </div>
+                </div>
+              </div>
+          <% else %>
+              <%= pie_chart(white_wins: @board.white_wins, black_wins: @board.black_wins) %>
+              <%= pie_chart(white_wins: @board.white_wins, black_wins: @board.black_wins, draws: @board.draws) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="moves">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="page-header">Best moves</h2>
+          </div>
+          <div class="col-md-12">
+            <div class="media">
+              <% if !@board.plays.empty? %>
+                  <div class="list-group">
+                    <% @board.plays.each do |play| %>
+                        <%= link_to "Moves: #{play.play_boards.count} Heuristic: #{play.value}", game_board_play_path(@board, play), class: 'list-group-item' %>
+                    <% end %>
+                  </div>
+              <% else %>
+                  <div class="pull-left">
+                <span class="fa-stack fa-2x">
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fa fa-list-ol fa-stack-1x fa-inverse"></i>
+                </span>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">No best moves</h4>
+
+                    <p>We don't have any best moves for the moment...</p>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

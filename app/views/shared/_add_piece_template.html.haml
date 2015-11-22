@@ -1,0 +1,15 @@
+%script#add-piece-modal(type="text/ng-template")
+  .modal-header
+    %h3.modal-title
+      Selecciona una pieza
+
+  .modal-body
+    %ul.list-group.text-center(ng-init="colors = #{colors.to_json}")
+      .btn-group(role="group")
+        - colors.each do |color|
+          %button.btn.btn-default(ng-click="selected_color = #{color[1]}")= color[0]
+      .row
+        - colors.each do |color|
+          - pieces.each do |piece|
+            %li.list-group-item.col-lg-4(ng-show="selected_color == #{color[1]}" ng-click="selectPiece(\"#{piece[0]}\", \"#{color[0]}\", \"#{asset_path "pieces/#{color[0]}/#{piece[0]}.png"}\")")
+              = image_tag "pieces/#{color[0]}/#{piece[0]}.png", class: 'img-responsive select-piece'
